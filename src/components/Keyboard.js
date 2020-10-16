@@ -3,12 +3,17 @@ import styled from "styled-components";
 import LetterKey from "./LetterKey";
 
 import { colors, contentWidth } from "./GlobalStyles";
+import letters from "../data/letters.json";
 
-const Keyboard = ({}) => (
-  <Wrapper>
-    <LetterKey />
-  </Wrapper>
-);
+const Keyboard = ({ usedLetters }) => {
+  return (
+    <Wrapper>
+      {letters.map((letter) => {
+        return <LetterKey usedLetters={usedLetters} letter={letter} />;
+      })}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   background: ${colors.yellow};
